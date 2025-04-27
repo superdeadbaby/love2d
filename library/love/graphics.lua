@@ -639,7 +639,7 @@ function love.graphics.line(x1, y1, x2, y2, ...) end
 ---
 ---[Open in Browser](https://love2d.org/wiki/love.graphics.newArrayImage)
 ---
----@param slices table # A table containing filepaths to images (or File, FileData, ImageData, or CompressedImageData objects), in an array. Each sub-image must have the same dimensions. A table of tables can also be given, where each sub-table contains all mipmap levels for the slice index of that sub-table.
+---@param slices table|string|love.File|love.FileData|love.ImageData|love.CompressedImageData[] # A table containing filepaths to images (or File, FileData, ImageData, or CompressedImageData objects), in an array. Each sub-image must have the same dimensions. A table of tables can also be given, where each sub-table contains all mipmap levels for the slice index of that sub-table.
 ---@param settings? {mipmaps: boolean, linear: boolean, dpiscale: number} # Optional table of settings to configure the array image, containing the following fields:
 ---@return love.Image image # An Array Image object.
 function love.graphics.newArrayImage(slices, settings) end
@@ -652,7 +652,7 @@ function love.graphics.newArrayImage(slices, settings) end
 ---
 ---@overload fun(width: number, height: number):love.Canvas
 ---@overload fun(width: number, height: number, settings: table):love.Canvas
----@overload fun(width: number, height: number, layers: number, settings: table):love.Canvas
+---@overload fun(width: number, height: number, layers: number, settings?: table):love.Canvas
 ---@return love.Canvas canvas # A new Canvas with dimensions equal to the window's size in pixels.
 function love.graphics.newCanvas() end
 
@@ -870,7 +870,7 @@ function love.graphics.newVideo(filename) end
 ---
 ---[Open in Browser](https://love2d.org/wiki/love.graphics.newVolumeImage)
 ---
----@param layers table # A table containing filepaths to images (or File, FileData, ImageData, or CompressedImageData objects), in an array. A table of tables can also be given, where each sub-table represents a single mipmap level and contains all layers for that mipmap.
+---@param layers table|string|love.File|love.FileData|love.ImageData|love.CompressedImageData[] # A table containing filepaths to images (or File, FileData, ImageData, or CompressedImageData objects), in an array. A table of tables can also be given, where each sub-table represents a single mipmap level and contains all layers for that mipmap.
 ---@param settings? {mipmaps: boolean, linear: boolean} # Optional table of settings to configure the volume image, containing the following fields:
 ---@return love.Image image # A volume Image object.
 function love.graphics.newVolumeImage(layers, settings) end
@@ -1570,6 +1570,7 @@ function Font:getWidth(text) end
 ---
 ---[Open in Browser](https://love2d.org/wiki/Font:getWrap)
 ---
+---@overload fun(self: love.Font, coloredtext: table, wraplimit: number):number, table
 ---@param text string # The text that will be wrapped.
 ---@param wraplimit number # The maximum width in pixels of each line that ''text'' is allowed before wrapping.
 ---@return number width # The maximum width of the wrapped text.

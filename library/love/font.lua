@@ -251,10 +251,9 @@ function Rasterizer:getLineHeight() end
 ---[Open in Browser](https://love2d.org/wiki/Rasterizer:hasGlyphs)
 ---
 ---@param glyph1 string|number # Glyph
----@param glyph2 string|number # Glyph
 ---@vararg string|number # Additional glyphs
 ---@return boolean hasGlyphs # Whatever font contains specified glyphs.
-function Rasterizer:hasGlyphs(glyph1, glyph2, ...) end
+function Rasterizer:hasGlyphs(glyph1, ...) end
 
 ---
 ---True Type hinting mode.
